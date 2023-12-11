@@ -6,7 +6,7 @@
 #    By: mvpee <mvpee@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 16:39:29 by mvpee             #+#    #+#              #
-#    Updated: 2023/12/11 17:58:43 by mvpee            ###   ########.fr        #
+#    Updated: 2023/12/11 18:09:12 by mvpee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,9 +43,9 @@ fclean: clean
 re: fclean all
 
 run: all
-	./$(NAME) input "ls" "wc -l" output
+	./$(NAME) input "ls" "wc" output
 
 test: all
-	valgrind --leak-check=full ./$(NAME) input "echo qwerty" "wc -l" output
+	valgrind --leak-check=full ./$(NAME) input "echo" "wc" output
 
 .PHONY: all clean fclean re
