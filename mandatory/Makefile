@@ -6,7 +6,7 @@
 #    By: mvpee <mvpee@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 16:39:29 by mvpee             #+#    #+#              #
-#    Updated: 2023/12/11 18:09:12 by mvpee            ###   ########.fr        #
+#    Updated: 2023/12/11 20:51:26 by mvpee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS = 	srcs/main.c \
 
 OBJS = $(SRCS:.c=.o)
 
-CFLAGS = -I$(LIBFT)
+CFLAGS = -I$(LIBFT) -Wall -Werror -Wextra
 
 all: $(NAME)
 
@@ -46,6 +46,6 @@ run: all
 	./$(NAME) input "ls" "wc" output
 
 test: all
-	valgrind --leak-check=full ./$(NAME) input "echo" "wc" output
+	valgrind --leak-check=full ./$(NAME) input "ls" "wc" output
 
 .PHONY: all clean fclean re

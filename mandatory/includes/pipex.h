@@ -6,7 +6,7 @@
 /*   By: mvpee <mvpee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:40:01 by mvpee             #+#    #+#             */
-/*   Updated: 2023/12/11 18:10:33 by mvpee            ###   ########.fr       */
+/*   Updated: 2023/12/11 20:06:02 by mvpee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define PIPEX_H
 
 # include "../../libft/includes/libft.h"
-# include <unistd.h>
+# include <stdio.h>
+# include <sys/wait.h>
 
 # define RED "\x1B[31m"
 # define GREEN "\x1B[32m"
