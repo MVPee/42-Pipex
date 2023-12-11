@@ -6,7 +6,7 @@
 /*   By: mvpee <mvpee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:40:38 by mvpee             #+#    #+#             */
-/*   Updated: 2023/12/11 21:01:35 by mvpee            ###   ########.fr       */
+/*   Updated: 2023/12/11 21:04:24 by mvpee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ int	main(int ac, char **av, char **env)
 	if (ac != 5)
 		return (ft_printf_fd(2, RED "E-01:\nNumber(s) of args is invalid...\n" RESET), 1);
 	data.input = open(av[1], O_RDONLY);
-    data.output = open(av[4], O_CREAT | O_TRUNC | O_WRONLY, 0644);
 	if (data.input == -1)
 		return (ft_printf_fd(2, RED "E-02:\nInput doesn't exist...\n" RESET), 1);
+	data.output = open(av[4], O_CREAT | O_TRUNC | O_WRONLY, 0644);
 	data.cmd = find_path(env, av[2]);
 	if (!data.cmd)
 		return (ft_printf_fd(2, RED "E-03:\nCMD fail...\n" RESET), 1);
