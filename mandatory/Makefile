@@ -6,7 +6,7 @@
 #    By: mvpee <mvpee@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 16:39:29 by mvpee             #+#    #+#              #
-#    Updated: 2023/12/11 20:51:26 by mvpee            ###   ########.fr        #
+#    Updated: 2023/12/12 00:00:52 by mvpee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ fclean: clean
 re: fclean all
 
 run: all
-	./$(NAME) input "ls" "wc" output
+	./$(NAME) input "ls -l" "wc -l" output
 
 test: all
 	valgrind --leak-check=full ./$(NAME) input "ls" "wc" output
