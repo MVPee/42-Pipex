@@ -6,7 +6,7 @@
 /*   By: mvpee <mvpee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:40:01 by mvpee             #+#    #+#             */
-/*   Updated: 2023/12/11 20:06:02 by mvpee            ###   ########.fr       */
+/*   Updated: 2023/12/11 21:01:12 by mvpee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 typedef struct s_pipex_data
 {
 	char	*cmd;
-	char	*pipe;
+	char	*cmd2;
 	int		input;
 	int		output;
 }			t_data;

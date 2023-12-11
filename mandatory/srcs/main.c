@@ -6,7 +6,7 @@
 /*   By: mvpee <mvpee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:40:38 by mvpee             #+#    #+#             */
-/*   Updated: 2023/12/11 20:58:03 by mvpee            ###   ########.fr       */
+/*   Updated: 2023/12/11 21:01:35 by mvpee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ static void parent_process(t_data data, int *fd, char **env)
 	dup2(fd[0], STDIN_FILENO);
 	close(fd[0]);
 	dup2(data.output, STDOUT_FILENO);
-	if (execve(data.pipe, (char *[]){data.pipe, NULL}, env) == -1)
+	if (execve(data.cmd2, (char *[]){data.cmd2, NULL}, env) == -1)
 	{
 		close(data.output);
-		ft_free(2, &data.cmd, &data.pipe);
+		ft_free(2, &data.cmd, &data.cmd2);
 		perror("execve parent");
 		exit(EXIT_FAILURE);
 	}
 	close(data.output);
-	ft_free(1, &data.pipe);
+	ft_free(1, &data.cmd2);
 }
 
 static void child_process(t_data data, int *fd, char **env)
@@ -38,7 +38,7 @@ static void child_process(t_data data, int *fd, char **env)
     if (execve(data.cmd, (char *[]){data.cmd, NULL}, env) == -1)
 	{
 		close(data.input);
-		ft_free(2, &data.cmd, &data.pipe);
+		ft_free(2, &data.cmd, &data.cmd2);
 		perror("execve child");
 		exit(EXIT_FAILURE);
 	}
@@ -62,19 +62,19 @@ int	main(int ac, char **av, char **env)
 	data.cmd = find_path(env, av[2]);
 	if (!data.cmd)
 		return (ft_printf_fd(2, RED "E-03:\nCMD fail...\n" RESET), 1);
-    data.pipe = find_path(env, av[3]);
-	if (!data.pipe)
-		return (ft_free(1, &data.cmd), ft_printf_fd(2, RED "E-03.1:\nCMD PIPE fail...\n" RESET), 1);
+    data.cmd2 = find_path(env, av[3]);
+	if (!data.cmd2)
+		return (ft_free(1, &data.cmd), ft_printf_fd(2, RED "E-03.1:\nCMD2 fail...\n" RESET), 1);
 
 	// Unit Test
-    ft_printf(GREEN "\nCMD: %s\nPIPE: %s\n\n" RESET, data.cmd, data.pipe);
+    ft_printf(GREEN "\nCMD: %s\nPIPE: %s\n\n" RESET, data.cmd, data.cmd2);
 	
 	// Process
     if (pipe(fd) == -1)
-		return (ft_free(2, &data.cmd, &data.pipe), ft_printf_fd(2, RED "E-03.1:\nPIPE fail...\n" RESET), 1);
+		return (ft_free(2, &data.cmd, &data.cmd2), ft_printf_fd(2, RED "E-03.1:\nPIPE fail...\n" RESET), 1);
     pid = fork();
 	if (pid == -1)
-		return (ft_free(2, &data.cmd, &data.pipe), ft_printf_fd(2, RED "E-04:\nFork fail...\n" RESET), 1);
+		return (ft_free(2, &data.cmd, &data.cmd2), ft_printf_fd(2, RED "E-04:\nFork fail...\n" RESET), 1);
 	if (pid == 0)
 		child_process(data, fd, env);
 	else
