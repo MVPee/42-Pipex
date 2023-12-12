@@ -6,7 +6,7 @@
 /*   By: mvpee <mvpee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:40:01 by mvpee             #+#    #+#             */
-/*   Updated: 2023/12/12 00:06:55 by mvpee            ###   ########.fr       */
+/*   Updated: 2023/12/12 09:28:20 by mvpee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ typedef struct s_pipex_data
 	int		output;
 }			t_data;
 
-char		*find_path(char **env, char *cmd);
-int			arg_check(t_data *data, char **av, char **env);
+/* Init functions */
+int			init(t_data *data, char **av, char **env);
+
+/* Exit functions */
 void		ft_exit(t_data *data, char *message, int type);
 
 #endif
