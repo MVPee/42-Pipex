@@ -3,18 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvpee <mvpee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mvan-pee <mvan-pee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:40:01 by mvpee             #+#    #+#             */
-/*   Updated: 2023/12/12 09:28:20 by mvpee            ###   ########.fr       */
+/*   Updated: 2023/12/12 13:40:45 by mvan-pee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include "../../libft/includes/libft.h"
+# include "../srcs/libft/includes/libft.h"
+# include <errno.h>
 # include <stdio.h>
+# include <string.h>
 # include <sys/wait.h>
 
 # define RED "\x1B[31m"
@@ -37,9 +39,12 @@ typedef struct s_pipex_data
 }			t_data;
 
 /* Init functions */
-int			init(t_data *data, char **av, char **env);
+void		init(t_data *data, char **av, char **env);
 
 /* Exit functions */
 void		ft_exit(t_data *data, char *message, int type);
+
+/* Find the path of the command */
+char		*find_path(char **env, char *cmd);
 
 #endif

@@ -3,19 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvpee <mvpee@student.42.fr>                +#+  +:+       +#+         #
+#    By: mvan-pee <mvan-pee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 16:39:29 by mvpee             #+#    #+#              #
-#    Updated: 2023/12/12 00:00:52 by mvpee            ###   ########.fr        #
+#    Updated: 2023/12/12 12:53:53 by mvan-pee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
-LIBFT = ../libft
+LIBFT = srcs/libft
 
 SRCS = 	srcs/main.c \
-		srcs/utils.c
+		srcs/utils.c \
+		srcs/find_path.c
 
 OBJS = $(SRCS:.c=.o)
 

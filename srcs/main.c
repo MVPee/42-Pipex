@@ -6,7 +6,7 @@
 /*   By: mvan-pee <mvan-pee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:40:38 by mvpee             #+#    #+#             */
-/*   Updated: 2023/12/12 11:05:09 by mvan-pee         ###   ########.fr       */
+/*   Updated: 2023/12/12 13:40:59 by mvan-pee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,11 @@ int	main(int ac, char **av, char **env)
 	pid_t	pid[2];
 
 	if (ac != 5 || !env)
-		return (ft_printf_fd(2,
+		return (ft_printf_fd(2, \
 				RED "E-01:\nNumber(s) of args is invalid...\n" RESET), 1);
-	if (init(&data, av, env))
-		ft_exit(&data, "", EXIT_FAILURE);
-	ft_printf(GREEN "\nCMD: %s\nCMD2: %s\n\n" RESET, data.cmd, data.cmd2);
-	ft_printf(GREEN "\n%s | %s\n\n" RESET, av[2], av[3]);
+	if (!env)
+		return (ft_printf_fd(2, RED "E-02:\nNo environment\n" RESET), 1);
+	init(&data, av, env);
 	if (pipe(fd) == -1)
 		ft_exit(&data, RED "E-03:\nPipe fail...\n" RESET, EXIT_FAILURE);
 	pid[0] = fork();
@@ -73,6 +72,6 @@ int	main(int ac, char **av, char **env)
 	else if (pid[1] == 0)
 		child2_process(&data, fd, env);
 	else
-		ft_exit(&data, GREEN "SUCCESS" RESET, EXIT_SUCCESS);
+		ft_exit(&data, "", EXIT_SUCCESS);
 	return (0);
 }
