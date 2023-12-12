@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvpee <mvpee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mvan-pee <mvan-pee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:40:38 by mvpee             #+#    #+#             */
-/*   Updated: 2023/12/12 09:53:36 by mvpee            ###   ########.fr       */
+/*   Updated: 2023/12/12 11:05:09 by mvan-pee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@
 static void	child2_process(t_data *data, int *fd, char **env)
 {
 	close(fd[1]);
-	dup2(fd[0], STDIN_FILENO);
-	dup2(data->output, STDOUT_FILENO);
+	if (dup2(fd[0], STDIN_FILENO) == -1 || dup2(data->output, STDOUT_FILENO) \
+		== -1)
+		ft_exit(data, RED "Dup2 child failure...\n" RESET, EXIT_FAILURE);
 	close(fd[0]);
 	if (execve(data->cmd2, data->s_cmd2, env) == -1)
-		ft_exit(data, RED "Execve parent failure...\n" RESET, EXIT_FAILURE);
+		ft_exit(data, RED "Execve child2 failure...\n" RESET, EXIT_FAILURE);
 }
 
 /*
@@ -33,8 +34,9 @@ static void	child2_process(t_data *data, int *fd, char **env)
 static void	child_process(t_data *data, int *fd, char **env)
 {
 	close(fd[0]);
-	dup2(fd[1], STDOUT_FILENO);
-	dup2(data->input, STDIN_FILENO);
+	if (dup2(fd[1], STDOUT_FILENO) == -1 || dup2(data->input, STDIN_FILENO) \
+		== -1)
+		ft_exit(data, RED "Dup2 child failure...\n" RESET, EXIT_FAILURE);
 	close(fd[1]);
 	if (execve(data->cmd, data->s_cmd, env) == -1)
 		ft_exit(data, RED "Execve child failure...\n" RESET, EXIT_FAILURE);
