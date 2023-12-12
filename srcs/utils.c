@@ -6,7 +6,7 @@
 /*   By: mvan-pee <mvan-pee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:39:01 by mvpee             #+#    #+#             */
-/*   Updated: 2023/12/12 13:46:05 by mvan-pee         ###   ########.fr       */
+/*   Updated: 2023/12/12 13:59:50 by mvan-pee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	init(t_data *data, char **av, char **env)
 	if (!data->cmd)
 	{
 		ft_printf("%s: command not found\n", data->s_cmd[0]);
-		ft_exit(data, "", EXIT_FAILURE);
+		ft_exit(data, "", 12);
 	}
 	data->cmd2 = find_path(env, data->s_cmd2[0]);
 	if (!data->cmd2)
