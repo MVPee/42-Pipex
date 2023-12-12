@@ -6,7 +6,7 @@
 /*   By: mvpee <mvpee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:40:38 by mvpee             #+#    #+#             */
-/*   Updated: 2023/12/12 09:46:54 by mvpee            ###   ########.fr       */
+/*   Updated: 2023/12/12 09:53:36 by mvpee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	child2_process(t_data *data, int *fd, char **env)
 {
 	close(fd[1]);
 	dup2(fd[0], STDIN_FILENO);
-	close(fd[0]);
 	dup2(data->output, STDOUT_FILENO);
+	close(fd[0]);
 	if (execve(data->cmd2, data->s_cmd2, env) == -1)
 		ft_exit(data, RED "Execve parent failure...\n" RESET, EXIT_FAILURE);
 }
