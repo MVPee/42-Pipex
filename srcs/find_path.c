@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvan-pee <mvan-pee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvpee <mvpee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:53:22 by mvan-pee          #+#    #+#             */
-/*   Updated: 2023/12/12 13:00:34 by mvan-pee         ###   ########.fr       */
+/*   Updated: 2023/12/14 17:17:38 by mvpee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ static char	*find_executable_path(char **paths, char *cmd)
 	{
 		temp = ft_strjoin(paths[i], "/");
 		if (!temp)
-			return (ft_free_split(1, &paths), NULL);
+			return (ft_free_matrix(1, &paths), NULL);
 		path = ft_strjoin(temp, cmd);
 		if (!path)
-			return (ft_free_split(1, &paths), ft_free(1, &temp), NULL);
+			return (ft_free_matrix(1, &paths), ft_free(1, &temp), NULL);
 		if (access(path, F_OK) == 0)
-			return (ft_free_split(1, &paths), ft_free(1, &temp), path);
+			return (ft_free_matrix(1, &paths), ft_free(1, &temp), path);
 		ft_free(2, &path, &temp);
 	}
-	ft_free_split(1, &paths);
+	ft_free_matrix(1, &paths);
 	return (NULL);
 }
 

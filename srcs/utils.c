@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvan-pee <mvan-pee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvpee <mvpee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:39:01 by mvpee             #+#    #+#             */
-/*   Updated: 2023/12/12 13:59:50 by mvan-pee         ###   ########.fr       */
+/*   Updated: 2023/12/14 17:18:12 by mvpee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ void	init(t_data *data, char **av, char **env)
 
 void	ft_exit(t_data *data, char *message, int type)
 {
-	ft_free_split(2, &data->s_cmd, &data->s_cmd2);
+	ft_free_matrix(2, &data->s_cmd, &data->s_cmd2);
 	ft_free(2, &data->cmd, &data->cmd2);
 	if (data->input)
 		close(data->input);
 	if (data->output)
 		close(data->output);
-	ft_printf_fd(2, "%s\n", message);
+	ft_printf_fd(2, "%s", message);
 	exit(type);
 }
