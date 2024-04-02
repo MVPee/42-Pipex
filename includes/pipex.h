@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvan-pee <mvan-pee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvpee <mvpee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:40:01 by mvpee             #+#    #+#             */
-/*   Updated: 2023/12/12 13:40:45 by mvan-pee         ###   ########.fr       */
+/*   Updated: 2024/04/02 12:37:41 by mvpee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@
 # define CYN "\x1B[36m"
 # define WHITW "\x1B[37m"
 # define RESET "\x1B[0m"
+
+# define COMMAND_NOT_FOUND 127
+# define REDIRECTION_FAILURE 1
 
 typedef struct s_pipex_data
 {

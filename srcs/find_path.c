@@ -6,7 +6,7 @@
 /*   By: mvpee <mvpee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:53:22 by mvan-pee          #+#    #+#             */
-/*   Updated: 2023/12/14 17:17:38 by mvpee            ###   ########.fr       */
+/*   Updated: 2024/04/02 12:39:38 by mvpee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ char	*find_path(char **env, char *cmd)
 	char	**paths;
 	char	*executable_path;
 
+	if (access(cmd, F_OK) == 0)
+		return (ft_strdup(cmd));
 	paths = get_paths_from_env(env);
 	executable_path = find_executable_path(paths, cmd);
 	return (executable_path);

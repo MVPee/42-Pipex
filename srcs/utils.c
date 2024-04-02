@@ -6,7 +6,7 @@
 /*   By: mvpee <mvpee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:39:01 by mvpee             #+#    #+#             */
-/*   Updated: 2023/12/14 17:18:12 by mvpee            ###   ########.fr       */
+/*   Updated: 2024/04/02 12:37:52 by mvpee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ static void	init_struct(t_data *data, char **av)
 	if (data->input == -1)
 	{
 		perror(av[1]);
-		ft_exit(data, "", EXIT_FAILURE);
+		ft_exit(data, "", REDIRECTION_FAILURE);
 	}
 	data->output = open(av[4], O_CREAT | O_TRUNC | O_WRONLY, 0644);
 	if (data->output == -1)
 	{
 		perror(av[4]);
-		ft_exit(data, "", EXIT_FAILURE);
+		ft_exit(data, "", REDIRECTION_FAILURE);
 	}
 }
 
@@ -47,13 +47,13 @@ void	init(t_data *data, char **av, char **env)
 	if (!data->cmd)
 	{
 		ft_printf("%s: command not found\n", data->s_cmd[0]);
-		ft_exit(data, "", 12);
+		ft_exit(data, "", COMMAND_NOT_FOUND);
 	}
 	data->cmd2 = find_path(env, data->s_cmd2[0]);
 	if (!data->cmd2)
 	{
 		ft_printf("%s: command not found\n", data->s_cmd2[0]);
-		ft_exit(data, "", EXIT_FAILURE);
+		ft_exit(data, "", COMMAND_NOT_FOUND);
 	}
 }
 
